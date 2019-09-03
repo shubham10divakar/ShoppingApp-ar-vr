@@ -16,14 +16,16 @@ import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()
+{
 
     private lateinit var arFragment: ArFragment
 
     private var isTracking: Boolean = false
     private var isHitting: Boolean = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set the onclick lister for our button
         // Change this string to point to the .sfb file of your choice :)
-        floatingActionButton.setOnClickListener { addObject(Uri.parse("NOVELO_EARTH.sfb")) }
+        floatingActionButton.setOnClickListener { addObject(Uri.parse("Hi-fi stereo.sfb")) }
         showFab(false)
 
     }
@@ -91,7 +93,9 @@ class MainActivity : AppCompatActivity() {
     private fun updateTracking(): Boolean {
         val frame = arFragment.arSceneView.arFrame
         val wasTracking = isTracking
-        isTracking = frame.camera.trackingState == TrackingState.TRACKING
+        if (frame != null) {
+            isTracking = frame.camera.trackingState == TrackingState.TRACKING
+        }
         return isTracking != wasTracking
     }
 
@@ -106,14 +110,18 @@ class MainActivity : AppCompatActivity() {
      *
      * This method takes in our 3D model and performs a hit test to determine where to place it
      */
-    private fun addObject(model: Uri) {
+    private fun addObject(model: Uri)
+    {
         val frame = arFragment.arSceneView.arFrame
         val point = getScreenCenter()
-        if (frame != null) {
+        if (frame != null)
+        {
             val hits = frame.hitTest(point.x.toFloat(), point.y.toFloat())
-            for (hit in hits) {
+            for (hit in hits)
+            {
                 val trackable = hit.trackable
-                if (trackable is Plane && trackable.isPoseInPolygon(hit.hitPose)) {
+                if (trackable is Plane && trackable.isPoseInPolygon(hit.hitPose))
+                {
                     placeObject(arFragment, hit.createAnchor(), model)
                     break
                 }
@@ -152,7 +160,8 @@ class MainActivity : AppCompatActivity() {
      * The Transformable node is our Model
      * Once the nodes are connected we select the TransformableNode so it is available for interactions
      */
-    private fun addNodeToScene(fragment: ArFragment, anchor: Anchor, renderable: ModelRenderable) {
+    private fun addNodeToScene(fragment: ArFragment, anchor: Anchor, renderable: ModelRenderable)
+    {
         val anchorNode = AnchorNode(anchor)
         // TransformableNode means the user to move, scale and rotate the model
         val transformableNode = TransformableNode(fragment.transformationSystem)

@@ -31,7 +31,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
-    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.4.0"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.8.0"
     implementation 'com.android.support:design:27.1.1'
 }
 
@@ -41,3 +41,33 @@ sceneform.asset('sampledata/NOVELO_EARTH_obj_1I5ip-3VOfv_3LMrB56MuSq/NOVELO_EART
         'default',
         'sampledata/NOVELO_EARTH_obj_1I5ip-3VOfv_3LMrB56MuSq/NOVELO_EARTH.sfa',
         'src/main/assets/NOVELO_EARTH')
+
+sceneform.asset('sampledata/Bear/kuma.obj',
+        'default',
+        'sampledata/Bear/kuma.sfa',
+        'src/main/assets/kuma')
+
+sceneform.asset('sampledata/tv/model.obj',
+        'default',
+        'sampledata/tv/model.sfa',
+        'src/main/assets/model')
+
+sceneform.asset('sampledata/monitor/TV_01.obj',
+        'default',
+        'sampledata/monitor/TV_01.sfa',
+        'src/main/assets/TV_01')
+
+sceneform.asset('sampledata/sofa/sofa.obj',
+        'default',
+        'sampledata/sofa/sofa.sfa',
+        'src/main/assets/sofa')
+
+sceneform.asset('sampledata/desk/desk.obj',
+        'default',
+        'sampledata/desk/desk.sfa',
+        'src/main/assets/desk')
+
+sceneform.asset('sampledata/music_system/Hi-fi stereo.obj',
+        'default',
+        'sampledata/music_system/Hi-fi stereo.sfa',
+        'src/main/assets/Hi-fi stereo')
